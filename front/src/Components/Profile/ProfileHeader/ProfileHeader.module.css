@@ -1,0 +1,186 @@
+.profileStuff {
+    margin-bottom: 44px;
+    width: 100%;
+    height: 150px;
+    text-align: start;
+    display: flex;
+}
+
+.avatarBlockWrapper {
+    min-width: 91px;
+    max-width: 290px;
+    display: flex;
+    margin-right: 30px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.avatarBlock {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatarBlock img {
+    height: 150px;
+}
+
+.storyFrame {
+    width: 168px;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid purple;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profileInfo {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    max-width: 610px;
+    height: 170px;
+}
+
+.firstRow {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.firstRow h2 {
+    font-weight: 300;
+    color: #262626;
+    font-size: 28px;
+    margin: -5px 0 -6px;
+    display: inline-block;
+}
+
+.firstRow span {
+    margin-left: 7px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.followBtn {
+    border-radius: 4px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 61.5px;
+    font-size: 14px;
+    position: relative;
+    top: 13px;
+}
+
+.optionsBtn {
+    height: 30px;
+    width: 40px;
+    border: none;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.statistics {
+    height: 18px;
+    margin-bottom: 20px;
+    display: block;
+    height: 18px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.statistics a, .statistics span {
+    font-weight: 400;
+    margin-right: 20px;
+}
+
+.statistics a span, .statistics span span {
+    font-weight: 500;
+    margin-right: 0px;
+}
+
+.status {
+    height: 72px;
+}
+
+.stuff {
+    font-size: 14px;
+}
+
+.status {
+    height: 21px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.stuff b {
+    font-size: 18px;
+}
+
+.someLink {
+    height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media (min-width: 975px) {
+    .avatarBlockWrapper {
+        height: 170px;
+    }
+}
+
+@media (max-width: 736px) {
+    .avatarBlockWrapper {
+        margin-right: 30px;
+        height: 91px;
+        width: 91px;
+        flex-grow: 0;
+    }
+    .storyFrame {
+        height: 91px;
+        width: 91px;
+    }
+    .avatarBlock {
+        height: 77px;
+        width: 77px;
+    }
+    .profileStuff {
+        height: 82px;
+    }
+    .profileInfo {
+        height: 82px;
+    }
+    .firstRow {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .followBtn {
+        width: 240px;
+        display: block;
+        order: 3;
+    }
+    .optionsBtn {
+        order: 2;
+    }
+}
+
+@media (min-width: 600px) {
+    .followBtn {
+        width: 92px;
+    }
+}

@@ -1,0 +1,18 @@
+.RegLogBlock {
+    margin-top: 10px;
+    border: 2px solid #dfdfdf;
+    background-color: #fff;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RegLogBlock p {
+    color: #262626;
+    font-size: 14px;
+}
+
+.RegLogBlock p a {
+    color: #0095f6;
+}

@@ -1,0 +1,24 @@
+.orLine, .orOpt {
+    display: inline-block;
+}
+
+.orLine {
+    display: inline-block;
+    width: 101px;
+    border: none;
+    height: 1px;
+    background-color: gray;
+    position: relative;
+    top: -4px;
+}
+
+.orOpt {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+    margin: 0 18px;
+    text-transform: uppercase;
+    color: gray;
+    display: inline-block;
+}

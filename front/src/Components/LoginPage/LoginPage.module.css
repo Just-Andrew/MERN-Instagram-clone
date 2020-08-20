@@ -1,0 +1,25 @@
+.Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.formBlock {
+    height: 750px;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formBlockItem {
+    display: inline-block;
+}
+
+
+@media (max-width:800px) {
+    .phoneImg {
+        display: none;
+    }
+}

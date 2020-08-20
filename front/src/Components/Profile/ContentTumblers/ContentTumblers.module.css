@@ -1,0 +1,31 @@
+.contentTumblerWrapper {
+    width: 100%;
+    height: 53px;
+    border-top: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentTumblerBlock {
+    height: 53px;
+    display: flex;
+    justify-content: center;
+}
+
+.tumbler {
+    height: 53px;
+    width: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.tumbler:hover {
+    border-top: 2px solid black;
+}
+
+.lastTumbler {
+    margin-right: 0px;
+}
