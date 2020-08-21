@@ -52,14 +52,10 @@ const UserSchema = mongoose.Schema({
         }
     ],
     follows: [
-        { username: { type: String } }
+        { type: String }
     ],
     followers: [
-        {
-            username: { type: String },
-            id: { type: String },
-            avatar: { type: String }
-        }
+        { type: String }
     ]
 })
 

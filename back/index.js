@@ -7,6 +7,7 @@ const loginRouter = require("./routes/login")
 const authRouter = require("./routes/auth")
 const usersRouter = require("./routes/users")
 const userRouter = require("./routes/user")
+const followRouter = require("./routes/follow")
 const app = express()
 
 /* middlewares */
@@ -17,6 +18,7 @@ app.use("/login", loginRouter)
 app.use("/auth", authRouter)
 app.use("/users", usersRouter)
 app.use("/user", userRouter)
+app.use("/follow", followRouter)
 
 /* connection to DB */
 async function start() {
