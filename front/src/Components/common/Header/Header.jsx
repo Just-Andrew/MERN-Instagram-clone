@@ -45,15 +45,10 @@ const Search = props => {
                 <div className={styles.dropDownSearchResult} style={{ display: resultsMenuDisplay }} tabIndex="10"
                     onMouseEnter={() => {
                         setMouseIsOver(true)
-                        console.log('enter')
-                        console.log(!mouseIsOver)
                     }}
                     onMouseLeave={() => {
                         setMouseIsOver(false)
-                        console.log('leave')
-                        console.log(!mouseIsOver)
-                    }}
-                    onBlur={() => console.log('blur')}>
+                    }}>
                     {props.foundUsers !== null
                         ? props.foundUsers.length > 0
                             ? props.foundUsers.map(u =>

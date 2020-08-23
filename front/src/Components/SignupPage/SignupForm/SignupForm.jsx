@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 const SignupForm = props => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        console.log(data)
         props.signUp(data)
     }
 

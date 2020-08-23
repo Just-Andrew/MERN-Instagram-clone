@@ -13,11 +13,11 @@ router.post('/', async (req, res) => {
     } else if (usernameMatch !== null) {
         res.status(400).json({ message: "This username has already been declared", "resultCode": 1 })
     } else {
-        const password = await bcrypt.hash(req.body.password, 10)
+        const password = await bcrypt.hash(req.body.password.trim(), 10)
         const user = new User({
-            email: req.body.email,
-            fullname: req.body.fullname,
-            username: req.body.username,
+            email: req.body.email.trim(),
+            fullname: req.body.fullname.trim(),
+            username: req.body.username.trim(),
             password
         })
         try {

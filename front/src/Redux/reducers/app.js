@@ -5,7 +5,6 @@ import { setCurrentUser } from '../actions/profile'
 export const signUp = data => async dispatch => {
     dispatch(toggleLoader(true))
     const res = await appAPI.signup(data)
-    console.log(res.user)
     dispatch(setAuthorizedUserData(res.user))
     dispatch(setCurrentUser(res.user))
     dispatch(setAuthStatus(true))
@@ -16,7 +15,6 @@ export const signUp = data => async dispatch => {
 export const logIn = data => async dispatch => {
     dispatch(toggleLoader(true))
     const res = await appAPI.login(data)
-    console.log(res)
     if (res.resultCode < 1) {
         dispatch(setAuthorizedUserData(res.user))
         dispatch(setCurrentUser(res.user))
@@ -29,13 +27,11 @@ export const logIn = data => async dispatch => {
 export const authMe = () => async dispatch => {
     dispatch(toggleLoader(true))
     const res = await appAPI.authMe()
-    console.log(res)
     if (res && res.authorized) {
         dispatch(setAuthorizedUserData(res.user))
         dispatch(setCurrentUser(res.user))
         dispatch(setAuthStatus(true))
     }
-    console.log(res)
     dispatch(toggleLoader(false))
 }
 

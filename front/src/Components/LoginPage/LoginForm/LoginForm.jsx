@@ -13,7 +13,6 @@ import { logIn } from '../../../Redux/reducers/app'
 const LoginForm = props => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        console.log(data)
         props.logIn(data)
     }
 
