@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/User')
-const authentificateToken = require('../middleWares/authentificateToken')
+const  authentificateToken  = require('../middleWares/authentificateToken')
+const formatUser = require('../helpers/formatUser')
 
 const router = express.Router()
 
@@ -12,10 +13,8 @@ router.get('/:username', authentificateToken, async (req, res) => {
             const users = matches
                 .filter(u => u.username !== req.username)
                 .map(u => {
-                    delete u._doc.__v
-                    delete u._doc.password
-                    delete u._doc.email
-                    return { ...u._doc, followed: u.followers.indexOf(req.username) === -1 ? false : true }
+                    
+                    return { ...formatUser(u._doc), followed: u.followers.indexOf(req.username) === -1 ? false : true }
                 })
             res.status(200).json({ resultCode: 0, users })
         }

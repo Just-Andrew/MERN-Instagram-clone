@@ -1,6 +1,6 @@
 const express = require('express')
 const User = require('../models/User')
-const authentificateToken = require('../middleWares/authentificateToken')
+const  authentificateToken  = require('../middleWares/authentificateToken')
 const { findOne } = require('../models/User')
 
 const router = express.Router()

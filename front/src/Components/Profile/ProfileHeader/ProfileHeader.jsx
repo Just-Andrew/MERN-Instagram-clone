@@ -1,24 +1,17 @@
 import React, { useEffect } from 'react'
-import styles from './ProfileHeader.module.css'
+import classNames from 'classnames'
+/* assets */
 import NoAvatarIcon from '../../../assets/icons/no_avatar_icon.jpg'
+/* styles */
+import styles from './ProfileHeader.module.css'
+import { NavLink } from 'react-router-dom'
 
 const ProfileActivity = props => {
-    const editBtnStyles = {
-        background: 'white',
-        border: '1px solid #dbdbdb',
-        color: 'black'
-    }
-    const followBtnStyles = {
-        background: '#0095f6',
-        border: 'none',
-        color: 'white'
-    }
-    console.log(props.currentUser.followed)
     return (
         <>
             {props.profileBelongsToAuthorizedUser
                 ? <>
-                    <button className={styles.followBtn} style={editBtnStyles} >
+                    <button className={classNames(styles.followBtn, styles.editBtn)}>
                         <b> Edit Profile</b>
                     </button>
                     <button className={styles.optionsBtn}>
@@ -26,14 +19,21 @@ const ProfileActivity = props => {
                     </button>
                 </>
                 : <> {!props.currentUser.followed
-                    ? <button className={styles.followBtn} style={followBtnStyles}
+                    ? <button className={styles.followBtn}
                         onClick={() => props.follow(props.currentUser.username, true)}>
                         Follow
                     </button>
-                    : <button className={styles.followBtn} style={followBtnStyles}
-                        onClick={() => props.follow(props.currentUser.username, false)} >
-                        Unfollow
-                    </button>}
+                    : <>
+                        <NavLink to={`/chat/${props.currentUser.username}`}>
+                            <button className={classNames(styles.followBtn, styles.messagesBtn)}>
+                                Message
+                        </button>
+                        </NavLink>
+                        <button className={classNames(styles.followBtn, styles.unfollowBtn)}
+                            onClick={() => props.follow(props.currentUser.username, false)}>
+                            Unfollow
+                        </button>
+                    </>}
                     <button className={styles.optionsBtn}>
                         <svg aria-label="Options" fill="#262626" height="24" viewBox="0 0 48 48" width="24"><circle clipRule="evenodd" cx="8" cy="24" fillRule="evenodd" r="4.5"></circle><circle clipRule="evenodd" cx="24" cy="24" fillRule="evenodd" r="4.5"></circle><circle clipRule="evenodd" cx="40" cy="24" fillRule="evenodd" r="4.5"></circle></svg>
                     </button>
@@ -41,7 +41,6 @@ const ProfileActivity = props => {
         </>
     )
 }
-
 
 export const ProfileHeader = props => {
     useEffect(() => {

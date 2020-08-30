@@ -5,12 +5,10 @@ import { withRouter } from 'react-router-dom'
 
 import styles from './Profile.module.css'
 
-/* components */ 
+/* components */
 import { ContentTumblers } from './ContentTumblers/ContentTumblers'
 import { ProfileHeader } from './ProfileHeader/ProfileHeader'
 import { Posts } from './Posts/Posts'
-
-
 
 const Profile = props => {
     const [isProfileMine, setProfileBelonging] = useState()
@@ -21,7 +19,7 @@ const Profile = props => {
             ? state.users.everFoundUsers.find(el => el.username === props.match.params.username)
             : authorizedUser) || dispatch(getCurrentUser(props.match.params.username))
 
-
+         console.log(currentUser.followers)
     useEffect(() => {
         setProfileBelonging(props.match.params.username === authorizedUser.username)
     }, [props.match.params.username])

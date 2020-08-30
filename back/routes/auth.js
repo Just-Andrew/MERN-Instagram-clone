@@ -1,5 +1,5 @@
 const express = require('express')
-const authentificateToken = require('../middleWares/authentificateToken')
+const  authentificateToken  = require('../middleWares/authentificateToken')
 const User = require('../models/User')
 require("dotenv/config")
 const router = express.Router()

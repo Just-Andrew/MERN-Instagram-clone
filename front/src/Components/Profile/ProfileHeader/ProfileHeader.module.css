@@ -81,6 +81,37 @@
     font-size: 14px;
     position: relative;
     top: 13px;
+    background: #0095f6;
+    border: none;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .followBtn {
+        width: 240px;
+        display: block;
+        order: 3;
+    }
+    .optionsBtn {
+        order: 2;
+    }
+}
+
+@media (min-width: 600px) {
+    .followBtn {
+        width: 92px;
+    }
+}
+
+.unfollowBtn, .messagesBtn, .editBtn {
+    color: black;
+    background: white;
+    border: 1px solid #dbdbdb;
+}
+
+.unfollowBtn {
+    width: 70px;
+    margin-left: 10px;
 }
 
 .optionsBtn {
@@ -158,6 +189,9 @@
         height: 77px;
         width: 77px;
     }
+    .avatarBlock img {
+        height: 77px;
+    }
     .profileStuff {
         height: 82px;
     }
@@ -166,22 +200,5 @@
     }
     .firstRow {
         margin-bottom: 40px;
-    }
-}
-
-@media (max-width: 600px) {
-    .followBtn {
-        width: 240px;
-        display: block;
-        order: 3;
-    }
-    .optionsBtn {
-        order: 2;
-    }
-}
-
-@media (min-width: 600px) {
-    .followBtn {
-        width: 92px;
     }
 }

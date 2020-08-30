@@ -7,6 +7,7 @@ import {
     setFollowStatus
 } from '../actions/actions'
 import { usersAPI, followAPI } from '../../DAL/api'
+import { removeArrayItemByValue } from '../../helpers/removeArrayItemByValue'
 
 const InitialState = {
     lastlyFoundUsers: [],
@@ -33,14 +34,17 @@ export const getCurrentUser = username => async dispatch => {
 export const follow = (username, val) => async dispatch => {
     dispatch(toggleFollowLoader(true))
     const res = await followAPI.follow(username, val)
-    dispatch(setFollowStatus(res.data.followed))
+    dispatch(setFollowStatus(username, res.data.followed))
     dispatch(toggleFollowLoader(username, val))
 }
 
 const searchReducer = (state = InitialState, action) => {
     switch (action.type) {
         case 'SET-FOUND-USERS':
-            return { ...state, lastlyFoundUsers: action.users, everFoundUsers: [action.users, ...state.everFoundUsers] }
+            return {
+                ...state, lastlyFoundUsers: action.users,
+                everFoundUsers: [action.users, ...state.everFoundUsers]
+            }
 
         case 'SET-CURRENT-USER':
             return { ...state, everFoundUsers: [action.user, ...state.everFoundUsers] }
@@ -53,7 +57,14 @@ const searchReducer = (state = InitialState, action) => {
 
         case 'SET-FOLLOW-STATUS':
             const modifiedUsers = state.everFoundUsers
-                .map(u => u.username === action.username ? { ...u, followed: action.val } : u)
+                .map(u => u.username === action.username
+                    ? {
+                        ...u, followed: action.val,
+                        followers: action.val
+                            ? [...u.followers, localStorage.getItem('authorizedUserUsername')]
+                            : [...removeArrayItemByValue(u.followers, localStorage.getItem('authorizedUserUsername'))]
+                    }
+                    : u)
             return { ...state, everFoundUsers: [...modifiedUsers] }
 
         default: return state
