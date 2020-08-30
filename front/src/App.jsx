@@ -1,49 +1,43 @@
 import React, { useEffect } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { authMe } from './Redux/reducers/app'
+/* styles */
 import './App.css'
+/* components */
 import LoginPage from './Components/LoginPage/LoginPage'
 import SignupPage from './Components/SignupPage/SignupPage'
-import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './Components/common/Header/Header'
-import Profile from './Components/Profile/ProfileContainer'
-import { connect } from 'react-redux'
-import { authMe } from './Redux/reducers/app'
+import Profile from './Components/Profile/Profile'
 import Loader from './Components/Loader/Loader'
 
-
-const App = props => {
+export const App = props => {
+  const [loading, username, isAuth] = useSelector(state => [state.app.loading, state.app.authorizedUser.username, state.app.isAuth])
+  const dispatch = useDispatch()
   useEffect(() => {
-    props.authMe()
+    dispatch(authMe())
   }, [])
 
   return (
     <div className="App">
-      {props.loading
+      {loading
         ? <Loader />
         : <>
           <Route path='/signup' render={() => <SignupPage />} />
           <Route path='/login' render={() => <LoginPage />} />
-          {props.isAuth
+          {isAuth
             ? <Switch>
               <Route path='/' render={() =>
                 <>
                   <Header />
                   <Route path='/profile/:username' render={() => <Profile />} />
-                  <Route exact path='/profile' render={() => <Redirect to={`/profile/${props.username}`} />} />
+                  <Route exact path='/profile' render={() => <Redirect to={`/profile/${username}`} />} />
                 </>
               } />
             </Switch>
             : <Redirect to='/login' />}
         </>}
     </div>
-
   )
 }
 
-const mapStateToProps = state => ({
-  loading: state.app.loading,
-  isAuth: state.app.isAuth,
-  username: state.app.authorizedUser && state.app.authorizedUser.username
-})
-
-
-export default connect(mapStateToProps, { authMe })(App)

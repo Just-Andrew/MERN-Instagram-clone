@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './ProfileHeader.module.css'
 import NoAvatarIcon from '../../../assets/icons/no_avatar_icon.jpg'
-import { followAPI } from '../../../DAL/api'
 
 const ProfileActivity = props => {
     const editBtnStyles = {
@@ -14,7 +13,7 @@ const ProfileActivity = props => {
         border: 'none',
         color: 'white'
     }
-
+    console.log(props.currentUser.followed)
     return (
         <>
             {props.profileBelongsToAuthorizedUser
@@ -44,7 +43,9 @@ const ProfileActivity = props => {
 }
 
 
-const ProfileHeader = props => {
+export const ProfileHeader = props => {
+    useEffect(() => {
+    }, [props.currentUser.followed])
     return (
         <header className={styles.profileStuff}>
             <div className={styles.avatarBlockWrapper}>
@@ -62,11 +63,18 @@ const ProfileHeader = props => {
                 </div>
                 <div className={styles.statistics}>
                     <span>
-                        <span> 6,543 </span>
+                        <span> {props.currentUser.posts ? props.currentUser.posts.length + ' ' : '0 '} </span>
                         Posts
                     </span>
-                    <a href={`/${props.currentUser.username}/followers`} onClick={e => e.preventDefault()}><span>52,458 </span> Followers</a>
-                    <a href={`/${props.currentUser.username}/following`} onClick={e => e.preventDefault()}> <span>52</span> Following</a>
+
+                    <a href={`/followers/${props.currentUser.username}`}
+                        onClick={e => e.preventDefault()}>
+                        <span>{props.currentUser.followers ? props.currentUser.followers.length + ' ' : '0 '}</span>
+                         Followers</a>
+
+                    <a href={`/following/${props.currentUser.username}`}
+                        onClick={e => e.preventDefault()}> <span>{props.currentUser.follows ? props.currentUser.follows.length + ' ' : '0 '}</span>
+                    Following</a>
                 </div>
                 <div className={styles.stuff}>
                     <b className={styles.username}>{props.currentUser.fullname}</b>
@@ -76,5 +84,3 @@ const ProfileHeader = props => {
         </header>
     )
 }
-
-export default ProfileHeader

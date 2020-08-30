@@ -1,6 +1,5 @@
-import { setAuthStatus, setAuthorizedUserData, toggleLoader } from '../actions/app'
+import { setAuthStatus, setAuthorizedUserData, toggleLoader, setCurrentUser } from '../actions/actions'
 import { appAPI } from '../../DAL/api'
-import { setCurrentUser } from '../actions/profile'
 
 export const signUp = data => async dispatch => {
     dispatch(toggleLoader(true))
@@ -37,7 +36,17 @@ export const authMe = () => async dispatch => {
 
 export const logOut = () => dispatch => {
     localStorage.removeItem('token')
-    dispatch(setAuthorizedUserData(null))
+    dispatch(setAuthorizedUserData({
+        avatar: null,
+        description: null,
+        email: null,
+        followers: null,
+        follows: null,
+        fullname: null,
+        posts: null,
+        username: null,
+        _id: null
+    }))
     dispatch(setAuthStatus(false))
 }
 

@@ -1,0 +1,77 @@
+.search input {
+    font-size: 16px;
+    border: 1px solid #dbdbdb;
+    height: 28px;
+    width: 215px;
+}
+
+.search input::placeholder {
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+}
+
+.searchInput {
+    padding: 3px 10px;
+    font-size: 14px;
+    color: gray;
+}
+
+.dropDownSearchResult {
+    display: flex;
+    flex-direction: column;
+    width: 215px;
+    height: 362px;
+    max-height: 362px;
+    overflow-y: scroll;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    position: absolute;
+    top: 60px;
+}
+
+.userCard {
+    height: 60px;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img {
+    height: 40px;
+}
+
+.userInfo div {
+    height: 20px;
+}
+
+.username {
+    font-weight: 600;
+}
+
+.fullname {
+    font-weight: 300;
+    color: #8e8e8e;
+}
+
+.noResults {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 100%;
+    color: #8e8e8e;
+    font-size: 14px;
+}

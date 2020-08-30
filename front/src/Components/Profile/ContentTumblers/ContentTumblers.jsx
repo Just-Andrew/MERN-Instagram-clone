@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ContentTumblers.module.css'
 import classNames from 'classnames'
 
-const ContentTumblers = props => {
+export const ContentTumblers = props => {
     const tumblerStyles = {
         borderTop: "3px solid black"
     }
@@ -16,5 +16,3 @@ const ContentTumblers = props => {
         </div>
     )
 }
-
-export default ContentTumblers

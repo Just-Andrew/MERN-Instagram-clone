@@ -1,17 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import ThunkMiddleware from 'redux-thunk'
 import app from './reducers/app'
-import search from './reducers/search'
-import profile from './reducers/profile'
+import users from './reducers/users'
 
 const reducers = combineReducers({
     app,
-    search,
-    profile
+    users,
 })
 
 const store = createStore(reducers, compose(
-    applyMiddleware(ThunkMiddleware)
+    applyMiddleware(ThunkMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 
 window.store = store

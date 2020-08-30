@@ -36,7 +36,6 @@ export const usersAPI = {
 export const followAPI = {
     follow(username, val) {
         const url = `follow/${username}`
-        console.log(val)
         return val
             ? Instance.post(url)
             : Instance.delete(url)
